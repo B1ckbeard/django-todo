@@ -18,6 +18,7 @@ from django.urls import path
 from todo import views
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     #auth
     path('signup/', views.signupuser, name='signupuser'),
@@ -26,7 +27,6 @@ urlpatterns = [
 
 
     #todo
-    path('', views.home, name='home'),
     path('create/', views.createtodo, name='createtodo'),
     path('curent/', views.currenttodo, name='currenttodo'),
     path('completed/', views.completedtodos, name='completedtodos'),

@@ -1,4 +1,6 @@
 {%  extends 'todo/base.html'  %}
+{% load crispy_forms_tags %}
+
 {%  block content  %}
 
 <h1>Login</h1>
@@ -7,7 +9,7 @@
 
 <form method = "POST">
 {% csrf_token %}
-{{ form.as_p }}
-<button type="submit" name="button">Login</button>
+{{ form|crispy }}
+<button class="btn btn-primary" type="submit" name="button">Login</button>
 </form>
 {%  endblock  %}
