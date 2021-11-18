@@ -1,6 +1,31 @@
 {%  extends 'todo/base.html'  %}
 {%  block content  %}
+{% load static %}
 
-<h1>ToDo homepage</h1>
-
+<h1 class="text-center mt-4">ToDo project</h1>
+<div class="container-fluid d-flex mt-4 justify-content-center w-50">
+  <div class="shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="row">
+      <div class="col">
+        <p class="text-center">This simple To Do List app - is one of the
+           most effective tools for planning and organizing your work.
+         </p>
+         <p class="text-center">
+           Here you can create and track your tasks, mark some of them as important.
+         </p>
+         <p class="text-center">
+           To start using the application, you need to click the "SignUp" button at the top, then "LogIn" and create your first task.
+         </p>
+         <p class="text-center">
+           Good luck and have fun!)
+         </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="{%  static 'todo/5.jpg'  %}"  class="img-fluid" alt="...">
+      </div>
+    </div>
+  </div>
+</div>
 {%  endblock  %}

@@ -2,24 +2,32 @@
 {% load crispy_forms_tags %}
 {%  block content  %}
 
-{{ error }}
 
-{{ todo.title }}
+<div class="container-fluid w-50 mt-4">
+  <div class="shadow-sm p-3 mb-5 bg-white rounded">
+    <h2 class="text-center">{{ todo.title }}</h2>
+    <h2 class="text-center">{{  error  }}</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-secondary btn-lg" type="submit" name="button">Save</button>
+      </div>
+    </form>
+    <form method="POST" action="{% url 'completetodo' todo.id %}">
+      {% csrf_token %}
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-dark btn-lg" type="submit" name="button">Complete</button>
+      </div>
+    </form>
+    <form method="POST" action="{% url 'deletetodo' todo.id %}">
+      {% csrf_token %}
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-danger btn-lg" type="submit" name="button">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-<form method="POST">
-{% csrf_token %}
-{{ form|crispy }}
-<button class="btn btn-primary" type="submit" name="button">Save</button>
-</form>
-
-<form method="POST" action="{% url 'completetodo' todo.id %}">
-{% csrf_token %}
-<button class="btn btn-primary" type="submit" name="button">Complete</button>
-</form>
-
-<form method="POST" action="{% url 'deletetodo' todo.id %}">
-{% csrf_token %}
-<button class="btn btn-primary" type="submit" name="button">Delete</button>
-</form>
 
 {%  endblock  %}
