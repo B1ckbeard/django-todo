@@ -12,18 +12,19 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-li((gg4!$nfxhdh9!+m+^6z3zy_9-+^$$8358@&c2--!%w&z3#'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-li((gg4!$nfxhdh9!+m+^6z3zy_9-+^$$8358@&c2--!%w&z3#')
+SECRET_KEY = 'django-insecure-li((gg4!$nfxhdh9!+m+^6z3zy_9-+^$$8358@&c2--!%w&z3#'
+#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-li((gg4!$nfxhdh9!+m+^6z3zy_9-+^$$8358@&c2--!%w&z3#')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+DEBUG = False
+#DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = ['*']
 
@@ -126,8 +127,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(
     os.path.dirname(BASE_DIR), 'static/')
 
+MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'media_root')
 
 LOGIN_URL = '/login'
 
@@ -138,7 +139,7 @@ LOGIN_URL = '/login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 # Simplified static file serving.
