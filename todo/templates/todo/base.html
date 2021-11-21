@@ -1,20 +1,20 @@
 <head>
   <title>DoToList</title>
-  <!--{% load static %}
-  <link rel="icon" href="{%  static 'todo/icon.ico'  %}">-->
+  {% load static %}
+  <link rel="icon" href="{%  static 'todo/icon.ico'  %}"
 </head>
 
-<body class="h-50 bg-light">
-<nav class="navbar navbar-main navbar-expand-sm navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
-        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-        <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
-      </svg>
-      ToDo
-    </a>
-    <div class="navbar-collapse" id="navbarNav">
+<body class="bg-light">
+  <header class="site-header sticky-top">
+    <nav class="navbar navbar-main navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand ms-2" href="{% url 'home' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+          <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+          <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+        </svg>
+        ToDo
+      </a>
+      <div class="navbar-collapse" id="navbarNav">
 
 {%  if user.is_authenticated  %}
 <ul class="navbar-nav me-auto">
@@ -32,7 +32,7 @@
   <li class="navbar-text text-success">
     Logged in as {{  user.username  }}
   </li>
-<form class="d-flex mb-0 ps-2" action="{% url 'logoutuser' %}" method="post">
+<form class="d-flex mb-0 ps-2 me-2" action="{% url 'logoutuser' %}" method="post">
   {% csrf_token %}
   <button class="btn btn-sm btn-outline-secondary" type="submit">Logout</button>
 </form>
@@ -52,8 +52,8 @@
 
 {%  endif  %}
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 {%  block content  %}{%  endblock  %}
 </body>
